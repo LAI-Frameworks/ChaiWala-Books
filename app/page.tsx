@@ -1,6 +1,5 @@
 'use client'
 
-import { Box, Button, Heading, Input, VStack, Text } from '@chakra-ui/react'
 import { useState } from 'react'
 
 export default function Home() {
@@ -9,52 +8,53 @@ export default function Home() {
 
   const calculateTax = () => {
     const cashValue = parseFloat(cash) || 0
-    const taxValue = cashValue * 0.05 // 5% GST for chai
+    const taxValue = cashValue * 0.05
     setTax(taxValue)
   }
 
   return (
-    <Box p={8} maxW="400px" mx="auto" mt={10}>
-      <Heading color="orange.600" mb={6} textAlign="center">
-        ☕ चायवाला बुक्स
-      </Heading>
-      
-      <VStack spacing={4} align="stretch">
-        <Text fontWeight="bold" fontSize="lg">
-          आज का नकद डालें
-        </Text>
+    <div className="min-h-screen bg-gradient-to-br from-orange-50 to-amber-50 p-4">
+      <div className="max-w-md mx-auto mt-10 p-8 bg-white rounded-2xl shadow-xl">
+        <h1 className="text-3xl font-bold text-orange-600 text-center mb-6">
+          ☕ चायवाला बुक्स
+        </h1>
         
-        <Input
-          placeholder="₹"
-          size="lg"
-          value={cash}
-          onChange={(e) => setCash(e.target.value)}
-          type="number"
-        />
-        
-        <Button
-          colorScheme="orange"
-          size="lg"
-          onClick={calculateTax}
-        >
-          टैक्स कैलकुलेट करें
-        </Button>
-        
-        {tax > 0 && (
-          <Box p={4} bg="orange.50" borderRadius="md" mt={4}>
-            <Text fontSize="xl" fontWeight="bold">
-              आज का टैक्स: ₹{tax.toFixed(2)}
-            </Text>
-            <Text fontSize="sm" color="gray.600" mt={2}>
-              कुल: ₹{cash} | टैक्स (5%): ₹{tax.toFixed(2)}
-            </Text>
-          </Box>
-        )}
-        
-        <Text fontSize="sm" color="gray.500" textAlign="center" mt={8}>
-          अपना चाय का बिज़नेस आसान बनाएं
-        </Text>
-      </VStack>
-    </Box>
+        <div className="space-y-4">
+          <p className="font-bold text-lg text-gray-800">
+            आज का नकद डालें
+          </p>
+          
+          <input
+            type="number"
+            placeholder="₹"
+            className="w-full p-3 text-lg border-2 border-orange-300 rounded-lg focus:border-orange-500 focus:ring-2 focus:ring-orange-200 outline-none"
+            value={cash}
+            onChange={(e) => setCash(e.target.value)}
+          />
+          
+          <button
+            onClick={calculateTax}
+            className="w-full py-3 bg-gradient-to-r from-orange-500 to-amber-500 text-white font-bold text-lg rounded-lg hover:from-orange-600 hover:to-amber-600 transition-all active:scale-95"
+          >
+            टैक्स कैलकुलेट करें
+          </button>
+          
+          {tax > 0 && (
+            <div className="p-4 bg-orange-50 rounded-lg mt-4 border border-orange-200">
+              <p className="text-xl font-bold text-gray-900">
+                आज का टैक्स: ₹{tax.toFixed(2)}
+              </p>
+              <p className="text-sm text-gray-600 mt-1">
+                कुल: ₹{cash} | टैक्स (5%): ₹{tax.toFixed(2)}
+              </p>
+            </div>
+          )}
+          
+          <p className="text-sm text-gray-500 text-center mt-8">
+            अपना चाय का बिज़नेस आसान बनाएं
+          </p>
+        </div>
+      </div>
+    </div>
   )
 }
