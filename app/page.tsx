@@ -16,7 +16,7 @@ export default function Home() {
     <div className="min-h-screen bg-gradient-to-br from-orange-50 to-amber-50 p-4">
       <div className="max-w-md mx-auto mt-10 p-8 bg-white rounded-2xl shadow-xl">
         <h1 className="text-3xl font-bold text-orange-600 text-center mb-6">
-          ☕ चायवाला बुक्स
+          ☕ ChaiWala Books
         </h1>
         
         <div className="space-y-4">
